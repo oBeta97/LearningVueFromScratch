@@ -1,8 +1,9 @@
-Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
             paragraphs: [],
-            enteredText: ''
+            enteredText: '',
+            myGitHub: 'https://github.com/oBeta97/'
         };
     },
     methods: {
@@ -11,4 +12,7 @@ Vue.createApp({
             this.enteredText = '';
         }
     }
-}).mount('#app');
+});
+
+
+app.mount('#app');

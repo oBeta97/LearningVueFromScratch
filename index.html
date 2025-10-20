@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Basics</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js" defer></script>
     <script src="app.js" defer></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <section id="assignment">
-      <!-- 1) Output your name -->
-      <h2>{{ name }}</h2>
-      <!-- 2) Output your age -->
-      <p>{{ age }}</p>
-      <!-- 3) Output your age + 5 -->
-      <p>{{ agePlusFive }}</p>
-      <!-- 4) Output a random number (0 to 1) -->
-      <p>{{ randomNumber() }}</p>
-      <div>
-        <!-- 5) Display some image you found via Google -->
-        <img v-bind:src="randomCat" />
-      </div>
-      <!-- 6) Prepopulate the input field with your name via the "value" attribute -->
-      <input readonly type="text" v-bind:value="defaultText" />
+        <h1>Counter!</h1>
+        <p>
+            <button v-on:click="plusRandom()">random +</button> |
+            <button v-on:click="plus()">+</button>|
+            <button v-on:click="plusVar(5)">+ 5</button>|
+            <button v-on:click="reset()">reset</button>|
+            <button v-on:click="less()">-</button>|
+            <button v-on:click="lessVar(5)">- 5</button>|
+            <button v-on:click="lessRandom()">random -</button>|
+        </p>
+        <p>{{ countNumber }}</p>
+
+        <div>
+            <input type="text" v-on:input="updateText($event, 'Entered text: ')" />
+            <p>{{ enteredText }}</p>
+        </div>
+
+        <div>
+            <img v-bind:src="randomCat" />
+        </div>
+        <input readonly type="text" v-bind:value="defaultText" />
     </section>
-  </body>
+</body>
+
 </html>

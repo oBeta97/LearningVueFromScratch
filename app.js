@@ -1,16 +1,39 @@
 const app = Vue.createApp({
-  data() {
-    return {
-      name: 'Paolo',
-      age: 'My age is: 28',
-      agePlusFive: 'My Age in 5 year: 33',
-      defaultText: 'This is a funny cat gif!',
-      randomCat: 'https://cataas.com/cat/gif?width=300'
-    }
-  },
+    data() {
+        return {
+            countNumber: 0,
+            defaultText: 'This is a funny cat gif!',
+            enteredText: 'empty',
+            randomCat: 'https://cataas.com/cat/gif?width=300'
+        }
+    },
     methods: {
-        randomNumber() {
-            return 'My favourite number between 0 and 1 is: ' + Math.random().toFixed(1);
+        plus() {
+            this.countNumber++;
+        },
+        plusVar(num){
+            this.countNumber += num;
+        },
+        plusRandom() {
+            this.countNumber += Math.floor(Math.random() * 10) + 1;
+        },
+        less() {
+            this.countNumber--;
+        },
+        lessVar(num){
+            this.countNumber -= num;
+        },
+        lessRandom() {
+            this.countNumber -= Math.floor(Math.random() * 10) + 1;
+        },
+        reset() {
+            this.countNumber = 0;
+        },
+        updateText(event, baseText) {
+            if(event.target.value.length !== 0)
+                this.enteredText = baseText + event.target.value;
+            else
+                this.enteredText = 'empty';
         }
     }
 });

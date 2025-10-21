@@ -3,12 +3,11 @@ const app = Vue.createApp({
         return {
             counter: 0,
             isTimerRunning: false,
-            timerId: 0
         };
     },
     watch: {
-        isTimerRunning(value) {
-            if (value && this.timerId === 0) {
+        result() {
+            if (!this.isTimerRunning) {
                 console.log('Starting timer...');
                 this.timerId = setTimeout(() => {
                     if(this.counter !== 37){
@@ -19,12 +18,12 @@ const app = Vue.createApp({
 
                     alert('Congratulations, you won!');
                 }, 5000);
+                this.startTimer();
             } 
         }
     },
     computed: {
         result() {
-
             switch(true){
                 case (this.counter === 37):
                     return 'You did it!!';
@@ -40,16 +39,12 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        add5() {
-            this.counter += 5;
-            this.startTimer();
-        },
-        add1() {
-            this.counter += 1;
-            this.startTimer();
+        addToResult(num) {
+            this.counter += num;
         },
         startTimer() {
             if(this.isTimerRunning){
+                console.log('Timer already running!');
                 return;
             }
             

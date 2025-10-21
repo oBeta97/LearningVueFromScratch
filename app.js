@@ -6,12 +6,17 @@ const app = Vue.createApp({
             partialInput: ''
         };
     },
+    computed:{
+        test(){
+            return this.asdf(this.output1);
+        }
+    },
     methods: {
+        asdf(input){
+            return 'ciao ' + input;
+        },
         showAlert() {
             alert('Button was pressed!');
-        },
-        updateOutput1(event) {
-            this.output1 = event.target.value;
         },
         updateOutput2(event) {
             this.output2 = this.partialInput;

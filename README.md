@@ -1,4 +1,4 @@
-# first-vue-test
+# LearningVueFromScratch
 
 ## Descrizione
 

@@ -20,8 +20,25 @@
     <input type="text" v-model="inputGoalValue" />
     <button @click="addGoal">Add Goal</button>
     <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
-    <ul v-else>
-      <li v-for="(goal, index) in goals">{{++index}}. {{goal}}</li>
+    <p>try to put 2 goals, add a text in the second one and delete the first goal</p>
+    <ul v-if="goals.length > 0">
+      <span>working one</span>
+      <!-- Key is a vue method that identify each element in the loop -->
+      <li 
+        v-for="(goal, index) in goals" 
+        :key="goal" 
+        @click="removeGoal(index)"
+      >
+        {{index + 1}}. {{goal}}
+        <input type="text" @click.stop />
+      </li>
+    </ul>
+    <ul v-if="goals.length > 0">
+      <span>bugged one</span>
+      <li v-for="(goal, index) in goals" @click="removeGoal(index)">
+        {{index + 1}}. {{goal}}
+        <input type="text" @click.stop />
+      </li>
     </ul>
   </section>
 </body>

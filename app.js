@@ -1,21 +1,25 @@
 const app = Vue.createApp({
     data() {
         return {
-            goals: [],
-            inputGoalValue: ''
+            tasks: [],
+            newTaskText: "",
+            showList: true,
         };
     },
-    methods: {
-        addGoal() {
-            if (this.inputGoalValue.trim() !== '') {
-                this.goals.push(this.inputGoalValue);
-                this.inputGoalValue = '';
-            }
-        },
-        removeGoal(index) {
-            this.goals.splice(index, 1);
+    computed: {
+        hideOrShow() {
+            return this.showList ? 'Hide' : 'Show';
         }
-    }
+    },
+    methods: {
+        addTask() {
+            this.tasks.push(this.newTaskText);
+            this.newTaskText = "";
+        },
+        toggleList() {
+            this.showList = !this.showList;
+        }
+    },
 });
 
-app.mount('#user-goals');
+app.mount("#assignment");

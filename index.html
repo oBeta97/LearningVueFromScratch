@@ -13,33 +13,23 @@
 
 <body>
   <header>
-    <h1>Vue Course Goals</h1>
+    <h1>Vue Lists and Conditional Content</h1>
   </header>
-  <section id="user-goals">
-    <h2>My course goals</h2>
-    <input type="text" v-model="inputGoalValue" />
-    <button @click="addGoal">Add Goal</button>
-    <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
-    <p>try to put 2 goals, add a text in the second one and delete the first goal</p>
-    <ul v-if="goals.length > 0">
-      <span>working one</span>
-      <!-- Key is a vue method that identify each element in the loop -->
-      <li 
-        v-for="(goal, index) in goals" 
-        :key="goal" 
-        @click="removeGoal(index)"
-      >
-        {{index + 1}}. {{goal}}
-        <input type="text" @click.stop />
-      </li>
+  <section id="assignment">
+    <h2>Assignment</h2>
+    <!-- 1) Add code to manage a list of tasks in a Vue app -->
+    <!-- When clicking "Add Task" a new task with the entered text should be added -->
+    <input type="text" v-model="newTaskText" />
+    <button @click="addTask">Add Task</button>
+    <ul v-if="showList" >
+      <!-- 2) Output the list of tasks here -->
+      <li v-for="(task, index) in tasks" :key="task + index">{{ task }}</li>
     </ul>
-    <ul v-if="goals.length > 0">
-      <span>bugged one</span>
-      <li v-for="(goal, index) in goals" @click="removeGoal(index)">
-        {{index + 1}}. {{goal}}
-        <input type="text" @click.stop />
-      </li>
-    </ul>
+    <!-- 3) When the below button is pressed, the list should be shown or hidden -->
+    <!-- BONUS: Also update the button caption -->
+    <div>
+      <button @click="toggleList">{{hideOrShow}} List</button>
+    </div>
   </section>
 </body>
 

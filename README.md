@@ -1,36 +1,38 @@
-# LearningVueFromScratch
+# .
 
-## Descrizione
+This template should help get you started developing with Vue 3 in Vite.
 
-Progetto creato per apprendere le basi di Vue 3 seguendo un corso su Udemy. Contiene esercizi, esempi e piccole app per mettere in pratica concetti come componenti, reattività e gestione dello stato.
+## Recommended IDE Setup
 
-## Requisiti
+[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-- Node.js >= 14
-- npm o yarn
+## Recommended Browser Setup
 
-## Installazione
+- Chromium-based browsers (Chrome, Edge, Brave, etc.):
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
+  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
+- Firefox:
+  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
 
-1. Clona il repository:
-    git clone <url-del-repo>
-2. Installa le dipendenze:
-    npm install
-    // oppure
-    yarn
+## Customize configuration
 
-## Cosa sto imparando
+See [Vite Configuration Reference](https://vite.dev/config/).
 
-- Sintassi base di Vue 3
-- Binding dei dati
-- Event handling
-- Condizionali e loop
+## Project Setup
 
-## Risorse
+```sh
+npm install
+```
 
-- [Corso Udemy](https://www.udemy.com/course/vuejs-2-the-complete-guide/)
-- [Documentazione ufficiale Vue](https://vuejs.org) 
+### Compile and Hot-Reload for Development
 
-## Note
+```sh
+npm run dev
+```
 
-File ed esempi nel repo sono principalmente a scopo didattico e verranno aggiornati man mano che procedo con il corso.
-Ogni commit è associato ad un argomento o concetto specifico appreso.
+### Compile and Minify for Production
+
+```sh
+npm run build
+```

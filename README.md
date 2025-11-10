@@ -1,28 +1,38 @@
-# Learning Vue From Scratch
-This repository contains my notes and projects as I learn Vue.js from scratch. It includes tutorials, code examples, and practical applications to help solidify my understanding of Vue.js concepts and best practices.
+# .
 
-## Command for generate base Vue app
-```bash
-  vue create LearningVueFromScratch
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Recommended Browser Setup
+
+- Chromium-based browsers (Chrome, Edge, Brave, etc.):
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
+  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
+- Firefox:
+  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
 ```
 
-I used the above command to generate the base Vue application structure:
-```bash
-  npm init vue@latest .
-```
-because i already had a folder created named LearningVueFromScratch
+### Compile and Hot-Reload for Development
 
-## How to run the project
-To run the Vue.js application locally, follow these steps:
-1. Navigate to the project directory:
-```bash 
-  cd ./root/to/LearningVueFromScratch
+```sh
+npm run dev
 ```
-2. Install the dependencies:
-```bash
-  npm install
-```
-3. Start the development server:
-```bash
-  npm run dev
+
+### Compile and Minify for Production
+
+```sh
+npm run build
 ```

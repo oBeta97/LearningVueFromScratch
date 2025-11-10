@@ -1,10 +1,12 @@
 <script>
 import FriendContact from "./FriendContact.vue";
+import AddNewFriend from "./AddNewFriend.vue";
 
 export default {
     name : "MyFriendList",
     components: {
-        FriendContact
+        FriendContact,
+        AddNewFriend
     },
     data() {
         return {
@@ -20,6 +22,9 @@ export default {
     methods: {
         friendSelected(friendName) {
             this.selectedFriend = friendName;
+        },
+        addFriend(newFriend){
+            this.friends.push(newFriend);
         }
     }
 }
@@ -37,5 +42,8 @@ export default {
                 <FriendContact :friendName="friend.name" :phone="friend.phone" @friendSelected="friendSelected" />
             </li>
         </ul>
+    </section>
+    <section>
+        <AddNewFriend @newFriendAdded="addFriend" />
     </section>
 </template>

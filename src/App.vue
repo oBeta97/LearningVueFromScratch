@@ -4,7 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></ActiveElement>
-    <KnowledgeBase :topics="topics" @select-topic="activateTopic"></KnowledgeBase>
+    <KnowledgeBase />
   </div>
 </template>
 
@@ -45,6 +45,9 @@
 
   // fornitura dei topics per la dipendency injection
   provide('topics', topics.value);
+
+  // fornitura del metodo di selezione del topic per la dipendency injection
+  provide('selectTopicHandler', activateTopic);
 
   // Per test aggiungo un topic casuale dopo 5 secondi
   onMounted(()=>{

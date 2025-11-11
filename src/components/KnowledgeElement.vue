@@ -3,7 +3,7 @@
     <li>
       <h3>{{ topic.title }}</h3>
       <p>{{ topic.description }}</p>
-      <button @click="selectedTopic(topic.id)">Learn More</button>
+      <button @click="selectTopicHandler(topic.id)">Learn More</button>
     </li>
   </ul>
 </template>
@@ -17,8 +17,6 @@
   // variabile dove definisco cosa voglio farmi iniettare tramite dependency injection
   const topics = inject('topics');
 
-  // metodo di gestione della selezione di un topic
-  const selectedTopic = (idSelected) => {
-    events('select-topic', idSelected);
-  };
+  // iniezione del metodo di selezione del topic tramite dependency injection
+  const selectTopicHandler = inject('selectTopicHandler');
 </script>

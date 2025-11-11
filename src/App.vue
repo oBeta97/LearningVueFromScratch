@@ -1,61 +1,123 @@
-<script setup>
-import { ref } from 'vue';
-import ActiveUser from './components/ActiveUser.vue';
-import UserData from './components/UserData.vue';
+<template>
+  <div>
+    <ActiveElement
+      :topic-title="activeTopic && activeTopic.title"
+      :text="activeTopic && activeTopic.fullText"
+    ></ActiveElement>
+    <KnowledgeBase :topics="topics" @select-topic="activateTopic"></KnowledgeBase>
+  </div>
+</template>
 
-  const userInserted = ref({
-    name: 'not inserted yet',
-    age: 0
+<script setup>
+  // import delle API di Vue
+  import { onMounted, provide, ref } from 'vue';
+  // import dei componenti locali
+  import ActiveElement from './components/ActiveElement.vue';
+  import KnowledgeBase from './components/KnowledgeBase.vue';
+
+
+  // creazione delle due variabili di stato REATTIVE
+  const activeTopic = ref(null);
+  const topics = ref(
+    [
+      {
+        id: 'basics',
+        title: 'The Basics',
+        description: 'Core Vue basics you have to know',
+        fullText:
+          'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!',
+      },
+      {
+        id: 'components',
+        title: 'Components',
+        description:
+          'Components are a core concept for building Vue UIs and apps',
+        fullText:
+          'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.',
+      }
+    ]
+  );
+
+  // metodo di gestione dell'evento di selezione di un topic
+  const activateTopic = (topicId) => {
+    activeTopic.value = topics.value.find((topic) => topic.id === topicId);
+  };
+
+  // fornitura dei topics per la dipendency injection
+  provide('topics', topics.value);
+
+  // Per test aggiungo un topic casuale dopo 5 secondi
+  onMounted(()=>{
+    setTimeout(() => {
+      topics.value.push({
+        id: 'reactivity',
+        title: 'Reactivity',
+        description: 'Learn all about Vue 3 reactivity system',
+        fullText:
+          'The Vue 3 reactivity system is a powerful way to build dynamic user interfaces. It allows you to create reactive data structures that automatically update the DOM when their values change.',
+      });
+    }, 5000);
   });
 
-  const updateUserData = (newUser) =>{
-    userInserted.value = {
-      name: newUser.name,
-      age: newUser.age
-    };
-  }
 
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-    </div>
-  </header>
-
-  <main>
-    <ActiveUser :user="userInserted" />
-    <UserData @userDataSubmitted="updateUserData" />
-  </main>
-</template>
-
-<style scoped>
-header {
-  line-height: 1.5;
+<!-- Senza lo scoped così da rendere lo stile globale -->
+<style> 
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+}
+section {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 1rem;
+  border-radius: 12px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+li {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 15rem;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+h2 {
+  margin: 0.75rem 0;
+  text-align: center;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+button {
+  font: inherit;
+  border: 1px solid #c70053;
+  background-color: #c70053;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+button:hover,
+button:active {
+  background-color: #e24d8b;
+  border-color: #e24d8b;
 }
 </style>

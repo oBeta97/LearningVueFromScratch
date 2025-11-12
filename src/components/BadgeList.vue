@@ -1,9 +1,13 @@
 <template>
   <section>
     <base-card>
-      <!-- Per gli slot anonimi non serve aggiungere altre impostazioni.
-       Solo il template che si vuole visualizzare -->
-      <h2>Available Badges</h2>
+      <!-- In questo caso Template con l'attributo v-slot va a dire a vue 
+       a quale named slot facciamo riferimento.
+       In questo caso allo slot "header" -->
+      <template v-slot:header>
+        <h2>Available Badges</h2>
+      </template>
+      <!-- tutto questo template verrà assegnato allo slot di default! -->
       <ul>
         <li>
           <base-badge type="admin" caption="ADMIN"></base-badge>

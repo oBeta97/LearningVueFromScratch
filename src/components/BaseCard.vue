@@ -1,8 +1,15 @@
 <template>
     <div>
-        <!-- Tag speciale per identificare che qui ci andrà altro template.
-        In questo caso è uno slot generico e il componente accetterà solo
-        un contenuto figlio. -->
+
+        <header>
+            <!-- Con name andiamo a dare un nome al nostro NAMED slot.
+             In questo modo chi utilizzerà BaseCard potrà definire chi andrà
+             in questo slot e chi nell'altro/altri -->
+            <slot name="header"></slot>
+        </header>
+
+        <!-- In questo slot anonimo andrà qualunque altro template
+         non assegnato al named slot "header" -->
         <slot></slot>
     </div>
 </template>

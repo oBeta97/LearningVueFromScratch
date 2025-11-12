@@ -7,10 +7,20 @@
       :info-text="activeUser.description"
       :role="activeUser.role"
     ></user-info>
+    <random-list>
+      <!-- I vari attributi di uno slot vengono forniti dentro ad un oggetto che li racchiude tutti. -->
+      <template #default="itemList" >
+        <!-- Per accedere ai vari attributi quindi va fatto riferimento al singolo attributo.
+         Dato che listItem è all'interno di un v-for non serve iterare i dati -->
+        <strong>{{ itemList.listItem }}</strong> - <em>{{ itemList.standardPhrase }}</em>
+      </template>
+    </random-list>
   </div>
 </template>
 
 <script>
+import RandomList from './components/RandomList.vue';
+
 export default {
   data() {
     return {
@@ -21,6 +31,9 @@ export default {
       },
     };
   },
+  components:{
+    RandomList
+  }
 };
 </script>
 

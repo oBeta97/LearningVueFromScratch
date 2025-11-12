@@ -1,126 +1,35 @@
 <template>
   <div>
-    <ActiveElement
-      :topic-title="activeTopic && activeTopic.title"
-      :text="activeTopic && activeTopic.fullText"
-    ></ActiveElement>
-    <KnowledgeBase />
+    <the-header></the-header>
+    <badge-list></badge-list>
+    <user-info
+      :full-name="activeUser.name"
+      :info-text="activeUser.description"
+      :role="activeUser.role"
+    ></user-info>
   </div>
 </template>
 
-<script setup>
-  // import delle API di Vue
-  import { onMounted, provide, ref } from 'vue';
-  // import dei componenti locali
-  import ActiveElement from './components/ActiveElement.vue';
-  import KnowledgeBase from './components/KnowledgeBase.vue';
-
-
-  // creazione delle due variabili di stato REATTIVE
-  const activeTopic = ref(null);
-  const topics = ref(
-    [
-      {
-        id: 'basics',
-        title: 'The Basics',
-        description: 'Core Vue basics you have to know',
-        fullText:
-          'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!',
+<script>
+export default {
+  data() {
+    return {
+      activeUser: {
+        name: 'Maximilian Schwarzmüller',
+        description: 'Site owner and admin',
+        role: 'admin',
       },
-      {
-        id: 'components',
-        title: 'Components',
-        description:
-          'Components are a core concept for building Vue UIs and apps',
-        fullText:
-          'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.',
-      }
-    ]
-  );
-
-  // metodo di gestione dell'evento di selezione di un topic
-  const activateTopic = (topicId) => {
-    activeTopic.value = topics.value.find((topic) => topic.id === topicId);
-  };
-
-  // fornitura dei topics per la dipendency injection
-  provide('topics', topics.value);
-
-  // fornitura del metodo di selezione del topic per la dipendency injection
-  provide('selectTopicHandler', activateTopic);
-
-  // Per test aggiungo un topic casuale dopo 5 secondi
-  onMounted(()=>{
-    setTimeout(() => {
-      topics.value.push({
-        id: 'reactivity',
-        title: 'Reactivity',
-        description: 'Learn all about Vue 3 reactivity system',
-        fullText:
-          'The Vue 3 reactivity system is a powerful way to build dynamic user interfaces. It allows you to create reactive data structures that automatically update the DOM when their values change.',
-      });
-    }, 5000);
-  });
-
-
+    };
+  },
+};
 </script>
 
-<!-- Senza lo scoped così da rendere lo stile globale -->
-<style> 
-* {
-  box-sizing: border-box;
-}
+<style>
 html {
   font-family: sans-serif;
 }
+
 body {
   margin: 0;
-}
-section {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  margin: 2rem auto;
-  max-width: 40rem;
-  padding: 1rem;
-  border-radius: 12px;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-li {
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  width: 15rem;
-  margin: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-h2 {
-  margin: 0.75rem 0;
-  text-align: center;
-}
-
-button {
-  font: inherit;
-  border: 1px solid #c70053;
-  background-color: #c70053;
-  color: white;
-  padding: 0.75rem 2rem;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-button:hover,
-button:active {
-  background-color: #e24d8b;
-  border-color: #e24d8b;
 }
 </style>
